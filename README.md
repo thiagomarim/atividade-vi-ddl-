@@ -1,51 +1,64 @@
-# Sistema de Recomendação de Filmes e Séries por IA
+# Sistema de Recomendação de Filmes e Séries por IA 🎬
 
-Este projeto implementa um banco de dados para um sistema de recomendação de filmes e séries baseado no humor do usuário.
+Este projeto implementa um banco de dados PostgreSQL para um sistema de recomendação de filmes e séries baseado no humor do usuário.
 
-## Estrutura do Banco de Dados
-
-O banco de dados consiste em três tabelas principais:
-- `humor`: Armazena os diferentes estados de humor
-- `generos`: Cataloga os gêneros de filmes e séries
-- `filmes_series`: Relaciona títulos com seus respectivos gêneros e humores
-
-## Como Executar
-
-1. Instale o Docker e Docker Compose
-2. Clone este repositório
-3. Execute no terminal:
-```bash
-docker-compose up -d
-```
-
-4. Conecte ao banco de dados:
-- Host: localhost
-- Porta: 5432
-- Usuário: usuario
-- Senha: senha123
-- Banco: filmes_db
-
-5. Execute os scripts SQL na ordem:
-   - schema.sql
-   - data.sql
-
-## Estrutura do Projeto
+## 📋 Estrutura do Projeto
 
 ```
 .
 ├── README.md
 ├── docker-compose.yml
 └── sql/
-    ├── schema.sql
-    └── data.sql
+    ├── schema.sql    # Criação das tabelas
+    └── data.sql      # Dados iniciais
 ```
 
-## Exemplos de Consultas
+## 🚀 Como Executar
+
+### Pré-requisitos
+- Docker e Docker Compose
+- PostgreSQL (caso não use Docker)
+
+### Configuração com Docker
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/sistema-recomendacao-filmes.git
+cd sistema-recomendacao-filmes
+```
+
+2. Inicie o container:
+```bash
+docker-compose up -d
+```
+
+### Configuração sem Docker
+1. Instale o PostgreSQL
+2. Execute os scripts SQL na pasta `sql/` na ordem:
+   - schema.sql
+   - data.sql
+
+### Dados de Conexão
+- Host: localhost
+- Porta: 5432
+- Usuário: usuario
+- Senha: senha123
+- Banco: filmes_db
+
+## 📊 Modelo de Dados
+
+- **Tabela humor**: Armazena os estados de humor
+- **Tabela generos**: Catálogo de gêneros
+- **Tabela filmes_series**: Relaciona títulos com gêneros e humores
+
+## 🔍 Exemplos de Consultas
 
 ```sql
--- Buscar recomendações para usuários felizes
+-- Recomendações para usuários felizes
 SELECT * FROM recomendacoes_view WHERE humor = 'Feliz';
 
--- Buscar todos os filmes de um gênero específico
+-- Filmes de um gênero específico
 SELECT * FROM recomendacoes_view WHERE genero = 'Comédia';
 ```
+
+## 📝 Licença
+Este projeto está sob a licença MIT.
